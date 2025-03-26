@@ -24,6 +24,12 @@ public class ProbeControllerTest {
     }
 
     @Test
+    public void testTurnLeft() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/navigate/turn").param("left", "true"))
+                .andExpect(MockMvcResultMatchers.status().isCreated());
+    }
+
+    @Test
     public void getCurrentLocation() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/navigate/position"))
                 .andExpect(MockMvcResultMatchers.status().isOk());

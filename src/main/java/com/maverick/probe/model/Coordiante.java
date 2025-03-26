@@ -1,6 +1,8 @@
 package com.maverick.probe.model;
 
+import lombok.Data;
 
+@Data
 public class Coordiante {
 
     private int x;
@@ -12,10 +14,4 @@ public class Coordiante {
         this.y = y;
     }
 
-    public int getX(){
-        return this.x;
-    }
-    public int getY(){
-        return this.y;
-    }
 }

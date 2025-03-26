@@ -1,15 +1,27 @@
 package com.maverick.probe.service;
 
+import com.maverick.probe.component.FloorGrid;
 import com.maverick.probe.model.Coordiante;
 import com.maverick.probe.model.Direction;
+import com.maverick.probe.model.GridElement;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
+@ExtendWith(MockitoExtension.class)
 public class NavigationServiceTest {
 
-    private NavigationService navigationService = new NavigationServiceImpl();
+    @InjectMocks
+    NavigationService navigationService = new NavigationServiceImpl();
+
+    @Mock
+    FloorGrid grid;
 
     @BeforeEach
     public void initNavigationService(){
@@ -20,11 +32,13 @@ public class NavigationServiceTest {
 
     @Test
     public void testMoveForward(){
+        Mockito.when(grid.getElement(Mockito.any(Coordiante.class))).thenReturn(new GridElement(true));
         Assertions.assertEquals(new Coordiante(5, 6), navigationService.move(true));
     }
 
     @Test
     public void testMoveBackward(){
+        Mockito.when(grid.getElement(Mockito.any(Coordiante.class))).thenReturn(new GridElement(true));
         Assertions.assertEquals(new Coordiante(5, 4), navigationService.move(false));
     }
 

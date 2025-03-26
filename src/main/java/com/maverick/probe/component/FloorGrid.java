@@ -17,10 +17,11 @@ public class FloorGrid {
     @Value("${ocean.floor.dimension.y}")
     private int y;
 
-    private GridElement[][] grid = new GridElement[x][y];
+    private GridElement[][] grid;
 
     @PostConstruct
     public void initGrid(){
+        grid = new GridElement[x][y];
         IntStream.range(0,x).forEach(x -> {
                     IntStream.range(0, y).forEach(y -> {
                         grid[x][y] = new GridElement(true);

@@ -36,6 +36,7 @@ public class NavigationServiceImpl implements NavigationService{
         if(nextElement.isNavigable()){
             this.x = newPosition.getX();
             this.y = newPosition.getY();
+            logger.info("Moved to position. X:"+x+" ,Y:"+y);
         } else {
             throw new UnNavigablePositionException("Give Coordinate are not navigable. X:"+newPosition.getX()+" ,Y:"+newPosition.getY());
         }

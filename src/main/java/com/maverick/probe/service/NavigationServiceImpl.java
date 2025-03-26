@@ -43,6 +43,17 @@ public class NavigationServiceImpl implements NavigationService{
         return newPosition;
     }
 
+    @Override
+    public Direction turn(boolean left) {
+        if(left){
+            direction = direction.getLeft();
+        } else {
+            direction = direction.getRight();
+        }
+        logger.info("Turning left:"+ left+". New Direction: "+direction);
+        return direction;
+    }
+
     public Coordiante getNextCoordinate(boolean forward){
         int newX = x;
         int newY = y;

@@ -9,4 +9,6 @@ public interface NavigationService {
 
     //Return new Coordinates for move operation
     Coordiante getNextCoordinate(boolean forward);
+
+    Coordiante getCurrentPosition();
 }

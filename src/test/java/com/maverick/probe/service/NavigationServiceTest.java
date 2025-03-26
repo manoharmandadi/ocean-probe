@@ -52,5 +52,9 @@ public class NavigationServiceTest {
 
     }
 
+    @Test
+    public void testGetCurrentPosition(){
+        Assertions.assertEquals(new Coordiante(5,5), navigationService.getCurrentPosition());
+    }
 
 }

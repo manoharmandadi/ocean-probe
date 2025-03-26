@@ -23,4 +23,10 @@ public class ProbeControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isCreated());
     }
 
+    @Test
+    public void getCurrentLocation() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/navigate/position"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
 }

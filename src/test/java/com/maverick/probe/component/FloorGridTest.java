@@ -8,6 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.util.stream.IntStream;
+
 @ExtendWith(MockitoExtension.class)
 public class FloorGridTest {
 
@@ -23,6 +25,15 @@ public class FloorGridTest {
 
     @Test
     public void testGridInitialization(){
+        IntStream.range(0,10).forEach(x -> {
+            IntStream.range(0, 10).forEach(y -> {
+                Assertions.assertNotNull(grid.getElement(new Coordiante(x, y)));
+            });
+        });
+    }
+
+    @Test
+    public void getElement(){
         Assertions.assertNotNull(grid.getElement(new Coordiante(0, 0)));
     }
 }

@@ -1,5 +1,6 @@
 package com.maverick.probe.component;
 
+import com.maverick.probe.exception.OutsideGridFloorException;
 import com.maverick.probe.model.Coordiante;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -35,5 +36,10 @@ public class FloorGridTest {
     @Test
     public void getElement(){
         Assertions.assertNotNull(grid.getElement(new Coordiante(0, 0)));
+    }
+
+    @Test
+    public void getElementException(){
+        Assertions.assertThrows(OutsideGridFloorException.class, () ->  grid.getElement(new Coordiante(-1, 0)));
     }
 }

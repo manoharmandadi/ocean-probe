@@ -1,5 +1,6 @@
 package com.maverick.probe.component;
 
+import com.maverick.probe.exception.OutsideGridFloorException;
 import com.maverick.probe.model.Coordiante;
 import com.maverick.probe.model.GridElement;
 import jakarta.annotation.PostConstruct;
@@ -31,7 +32,11 @@ public class FloorGrid {
     }
 
     public GridElement getElement(Coordiante coordiante){
-        return grid[coordiante.getX()][coordiante.getY()];
+        if( coordiante.getX() >=0 && x > coordiante.getX() && coordiante.getY() >=0 && y > coordiante.getY()){
+            return grid[coordiante.getX()][coordiante.getY()];
+        } else {
+            throw new OutsideGridFloorException("Given coordinate x:"+coordiante.getX()+" ,y:"+coordiante.getY()+" is outside grid.");
+        }
     }
 
 

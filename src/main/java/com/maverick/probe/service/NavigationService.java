@@ -5,5 +5,5 @@ import com.maverick.probe.model.Coordiante;
 public interface NavigationService {
 
     //Return new Cooridates of the probe after move.
-    public Coordiante move(boolean forward);
+    Coordiante move(boolean forward);
 }

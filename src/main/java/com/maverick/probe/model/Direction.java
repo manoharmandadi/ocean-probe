@@ -7,7 +7,22 @@ public enum Direction {
     WEST;
 
     public Direction getLeft(){
-        int newDirection = (this.ordinal()-1 + Direction.values().length)% Direction.values().length;
+        return getLeftOrRight(true);
+    }
+
+    public Direction getRight(){
+        return getLeftOrRight(false);
+    }
+
+    private Direction getLeftOrRight(boolean left){
+        int correction;
+        if(left){
+            correction = -1;
+        } else {
+            correction = 1;
+        }
+        int newDirection = (this.ordinal() + correction + Direction.values().length)% Direction.values().length;
         return Direction.values()[newDirection];
+
     }
 }

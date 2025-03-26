@@ -75,4 +75,14 @@ public class NavigationServiceTest {
         Assertions.assertEquals(new Coordiante(5,5), navigationService.getCurrentPosition());
     }
 
+    @Test
+    public void testTurnLeft(){
+        Assertions.assertEquals(Direction.WEST, navigationService.turn(true));
+    }
+
+    @Test
+    public void testTurnRight(){
+        Assertions.assertEquals(Direction.EAST, navigationService.turn(false));
+    }
+
 }

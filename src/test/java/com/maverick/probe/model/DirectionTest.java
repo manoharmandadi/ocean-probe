@@ -13,4 +13,13 @@ public class DirectionTest {
         Assertions.assertEquals(Direction.EAST, Direction.SOUTH.getLeft());
 
     }
+
+    @Test
+    public void testGetRight(){
+        Assertions.assertEquals(Direction.NORTH, Direction.WEST.getRight());
+        Assertions.assertEquals(Direction.EAST, Direction.NORTH.getRight());
+        Assertions.assertEquals(Direction.SOUTH, Direction.EAST.getRight());
+        Assertions.assertEquals(Direction.WEST, Direction.SOUTH.getRight());
+
+    }
 }

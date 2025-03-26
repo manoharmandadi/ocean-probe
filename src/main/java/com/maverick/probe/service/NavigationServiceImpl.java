@@ -40,4 +40,9 @@ public class NavigationServiceImpl implements NavigationService{
         }
         return new Coordiante(newX, newY);
     }
+
+    @Override
+    public Coordiante getCurrentPosition() {
+        return new Coordiante(x, y);
+    }
 }

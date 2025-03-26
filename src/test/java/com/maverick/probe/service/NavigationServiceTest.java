@@ -20,8 +20,12 @@ public class NavigationServiceTest {
 
     @Test
     public void testMoveForward(){
-        Assertions.assertNotNull(navigationService.move(true));
+        Assertions.assertEquals(new Coordiante(5, 6), navigationService.move(true));
+    }
 
+    @Test
+    public void testMoveBackward(){
+        Assertions.assertEquals(new Coordiante(5, 4), navigationService.move(false));
     }
 
     @Test

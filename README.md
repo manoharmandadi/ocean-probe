@@ -1,8 +1,9 @@
 Ocean probe accepts two commands 
 1. localhost:8080/navigate/move?forward=true
-2. localhost:8080/navigate/turn?left=true
+   Request parameter forward is boolean(default to true)
+   Response would be co-ordiantes of the new position the probe is moved to.
+3. localhost:8080/navigate/turn?left=true
+   Request parameter is left. If true turn to left. if false turn right.
+   Response would be the new Direction probe is facing.
 
-   The request parameters forward & left are boolean (i.e. can be true or false)
 
-   The Response would be empty response with 201(Created) success, implying that the command was executed.
-   or Failure with Fail Response.

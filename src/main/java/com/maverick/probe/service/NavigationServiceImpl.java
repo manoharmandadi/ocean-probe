@@ -1,9 +1,13 @@
 package com.maverick.probe.service;
 
+import com.maverick.probe.component.FloorGrid;
+import com.maverick.probe.exception.UnNavigablePositionException;
 import com.maverick.probe.model.Coordiante;
 import com.maverick.probe.model.Direction;
+import com.maverick.probe.model.GridElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +25,21 @@ public class NavigationServiceImpl implements NavigationService{
     @Value("${probe.initial.direction}")
     private Direction direction;
 
+    @Autowired
+    private FloorGrid grid;
+
     @Override
     public Coordiante move(boolean forward) {
         logger.debug("Moving "+(forward? "forward": "backward")+ ". Facing :"+direction);
-
-        return new Coordiante(0, 0);
+        Coordiante newPosition = getNextCoordinate(forward);
+        GridElement nextElement = grid.getElement(newPosition);
+        if(nextElement.isNavigable()){
+            this.x = newPosition.getX();
+            this.y = newPosition.getY();
+        } else {
+            throw new UnNavigablePositionException("Give Coordinate are not navigable. X:"+newPosition.getX()+" ,Y:"+newPosition.getY());
+        }
+        return newPosition;
     }
 
     public Coordiante getNextCoordinate(boolean forward){

@@ -1,5 +1,6 @@
 package com.maverick.probe.component;
 
+import com.maverick.probe.model.Coordiante;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +13,6 @@ public class FloorGridTest {
 
     @Test
     public void testGridInitialization(){
-        Assertions.assertNotNull(grid.getElement(0,0));
+        Assertions.assertNotNull(grid.getElement(new Coordiante(0, 0)));
     }
 }

@@ -30,5 +30,27 @@ public class NavigationServiceTest {
         Assertions.assertEquals(new Coordiante(5, 4), navigationService.getNextCoordinate(false));
     }
 
+    @Test
+    public void getNextCoordinateEast(){
+        ReflectionTestUtils.setField(navigationService, "direction", Direction.EAST);
+        Assertions.assertEquals(new Coordiante(6, 5), navigationService.getNextCoordinate(true));
+        Assertions.assertEquals(new Coordiante(4, 5), navigationService.getNextCoordinate(false));
+
+    }
+    @Test
+    public void getNextCoordinateSouth(){
+        ReflectionTestUtils.setField(navigationService, "direction", Direction.SOUTH);
+        Assertions.assertEquals(new Coordiante(5, 4), navigationService.getNextCoordinate(true));
+        Assertions.assertEquals(new Coordiante(5, 6), navigationService.getNextCoordinate(false));
+
+    }
+    @Test
+    public void getNextCoordinateWest(){
+        ReflectionTestUtils.setField(navigationService, "direction", Direction.WEST);
+        Assertions.assertEquals(new Coordiante(4, 5), navigationService.getNextCoordinate(true));
+        Assertions.assertEquals(new Coordiante(6, 5), navigationService.getNextCoordinate(false));
+
+    }
+
 
 }

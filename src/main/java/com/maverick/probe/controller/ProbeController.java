@@ -1,6 +1,7 @@
 package com.maverick.probe.controller;
 
 import com.maverick.probe.model.Coordiante;
+import com.maverick.probe.model.Direction;
 import com.maverick.probe.service.NavigationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,16 @@ public class ProbeController {
 
     @PostMapping("/move")
     @ResponseStatus(HttpStatus.CREATED)
-    public void move(@RequestParam(value = "forward", defaultValue = "true") boolean forward){
+    public Coordiante move(@RequestParam(value = "forward", defaultValue = "true") boolean forward){
         logger.debug("Invoked move command, Forward: "+forward);
+        return navigationService.move(forward);
+    }
 
+    @PostMapping("/turn")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Direction turn(@RequestParam(value = "left") boolean left){
+        logger.debug("Invoked turn command, Left: "+left);
+        return navigationService.turn(left);
     }
 
     @GetMapping("/position")

@@ -10,4 +10,7 @@ public class GridElement {
     //Incase Floor is used by multiple probes
     //private boolean isOccupied;
 
+    public GridElement(boolean isNavigable){
+        this.isNavigable = isNavigable;
+    }
 }
